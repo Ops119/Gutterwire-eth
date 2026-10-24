@@ -1,0 +1,6 @@
+# Local secrets for `npm run dev` (copy to .dev.vars, which is gitignored)
+TELEGRAM_BOT_TOKEN=
+ADMIN_TOKEN=
+TELEGRAM_WEBHOOK_SECRET=
+GEMINI_API_KEY=
+CMC_API_KEY=

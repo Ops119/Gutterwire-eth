@@ -5,6 +5,9 @@ Eligibility rules, rate limits and budgets live in code. AI (Gemini free tier) o
 note per shortlisted token, from the supplied data; a template note is used whenever AI is off,
 over budget or returns anything unusable.
 
+> **Running on Cloudflare?** The `worker/` folder has a TypeScript port for the Workers Free plan
+> (cron trigger, D1, Telegram bot commands, photo call posts). See [worker/README.md](worker/README.md).
+
 ## Flow
 
 ```

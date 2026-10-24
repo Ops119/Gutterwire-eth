@@ -1,0 +1,37 @@
+name = "gutterwire-eth"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+# Hourly scan. The Worker itself decides when 48h have passed and sends the digest.
+[triggers]
+crons = ["5 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gutterwire"
+database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+migrations_dir = "migrations"
+
+[vars]
+TELEGRAM_CHAT_ID = "@Gutterwire_eth"
+# Comma-separated Telegram user ids allowed to use /scan and /check. Send /scan to the bot to see yours.
+TELEGRAM_ADMIN_IDS = ""
+GEMINI_MODEL = "gemini-2.5-flash-lite"
+GEMINI_DAILY_BUDGET = "20"
+MAX_MARKET_CAP_USD = "15000"
+MIN_LIQUIDITY_USD = "0"
+MAX_BUY_TAX = "0.10"
+MAX_SELL_TAX = "0.10"
+DIGEST_INTERVAL_HOURS = "48"
+# Workers Free allows 50 external subrequests per run; keep a margin.
+SUBREQUESTS_PER_RUN = "45"
+
+# Secrets (never in this file), set with `npx wrangler secret put <NAME>`:
+#   TELEGRAM_BOT_TOKEN        required
+#   ADMIN_TOKEN               required for the HTTP endpoints /setup, /status, /digest and /run
+#   TELEGRAM_WEBHOOK_SECRET   required for bot commands (letters, digits, _ and - only)
+#   GEMINI_API_KEY            optional, AI notes
+#   CMC_API_KEY               optional, backup market cap source
+
+[observability]
+enabled = true
